@@ -41,8 +41,37 @@ directive("googleMapLocator",function($window){
       }
 
       function initPicker() {
+        if(scope.location == undefined){
+          getLocation();
+        }else{
+          scope.location = JSON.parse(scope.location);
+          initLocationPicker();
+        }
+
+      }
+
+      function getLocation() {
+          if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(showPosition);
+          } else {
+              console.log("====Geolocation is not supported by this browser====");
+              // TODO: find a way to get lat, long of the user
+              showPosition({coords: {
+                            latitude: 12.8139068,
+                            longitude:77.65166829999998
+                            }
+                           });
+          }
+      }
+
+      function showPosition(position) {
+          scope.location = {latitude: position.coords.latitude, longitude: position.coords.longitude};
+          initLocationPicker();
+      }
+
+      function initLocationPicker(){
         $(element).locationpicker({
-            location: (scope.location != undefined) ? scope.location : {latitude: 42.00, longitude: -73.82480799999996},
+            location: scope.location,
             radius: scope.radius,
             onchanged: function (currentLocation, radius, isMarkerDropped) {
                 var location = $(this).locationpicker('map').location;

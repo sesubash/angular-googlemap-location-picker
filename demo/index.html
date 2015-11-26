@@ -15,6 +15,7 @@
   <body ng-controller="MainCtrl">
     <p>AngularJS Google Map Locator</p>
     <google-map-locator class="google-map"
+      location = "{{location}}"
       radius="10"
       on-location-initialize="onLocationInitialize(location)"
       on-location-change="onLocationChange(location)">
