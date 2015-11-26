@@ -32,12 +32,12 @@ directive("googleMapLocator",function($window){
           $window.document.body.appendChild(script);
       }
 
-      function onChanged(addressComponents) {
-          scope.onLocationChange({addressComponents: addressComponents});
+      function onChanged(location) {
+          scope.onLocationChange({location: location});
       }
 
-      function onInitialized(addressComponents){
-          scope.onLocationInitialize({addressComponents: addressComponents});
+      function onInitialized(location){
+          scope.onLocationInitialize({location: location});
       }
 
       function initPicker() {
@@ -45,12 +45,12 @@ directive("googleMapLocator",function($window){
             location: (scope.location != undefined) ? scope.location : {latitude: 42.00, longitude: -73.82480799999996},
             radius: scope.radius,
             onchanged: function (currentLocation, radius, isMarkerDropped) {
-                var addressComponents = $(this).locationpicker('map').location.addressComponents;
-                onChanged(addressComponents);
+                var location = $(this).locationpicker('map').location;
+                onChanged(location);
             },
             oninitialized: function(component) {
-                var addressComponents = $(component).locationpicker('map').location.addressComponents;
-                onInitialized(addressComponents);
+                var location = $(component).locationpicker('map').location;
+                onInitialized(location);
             }
         });
       }

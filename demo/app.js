@@ -3,14 +3,14 @@ var app = angular.module('angular-location-picker-demo', ['angular-location-pick
 app.controller('MainCtrl', function($scope) {
 
   console.log("SAdsad");
-  $scope.onLocationInitialize = function(addressComponents){
+  $scope.onLocationInitialize = function(location){
     console.log("=====from controller=======");
-    console.log(addressComponents);
+    console.log(location);
   }
 
-  $scope.onLocationChange = function(addressComponents){
+  $scope.onLocationChange = function(location){
     console.log("=====from controller=======")
-    console.log(addressComponents);
+    console.log(location);
   }
 
 });
