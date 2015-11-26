@@ -1,12 +1,12 @@
 # angular-googlemap-location-picker
 
-Install using bower
-bower install angular-googlemap-location-picker
+Install using bower<br/>
+bower install angular-googlemap-location-picker<br/><br/>
 
-Usage:
+Usage:<br/>
 
-<google-map-locator class="google-map"
-  radius="10"
-  on-location-initialize="onLocationInitialize(addressComponents)"
-  on-location-change="onLocationChange(addressComponents)">
-</google-map-locator>
+<google-map-locator class="google-map"<br/>
+  radius="10"<br/>
+  on-location-initialize="onLocationInitialize(addressComponents)"<br/>
+  on-location-change="onLocationChange(addressComponents)"><br/>
+</google-map-locator><br/>
