@@ -14,4 +14,9 @@ app.controller('MainCtrl', function($scope) {
     console.log(location);
   }
 
+  $scope.onMapLoaded = function(map){
+    console.log("=====from controller=======")
+    console.log(map);
+  }
+
 });

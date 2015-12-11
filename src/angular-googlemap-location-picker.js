@@ -9,7 +9,7 @@ directive("googleMapLocator",function($window){
       radius: "@",
       onLocationInitialize: "&",
       onLocationChange: "&",
-
+      onMapLoaded: "&"
     },
     link: function(scope, element, attrs){
       var callbackName = 'InitMapCb';
@@ -40,6 +40,10 @@ directive("googleMapLocator",function($window){
           scope.onLocationInitialize({location: location});
       }
 
+      function onMapLoaded(map){
+          scope.onMapLoaded({map: map});
+      }
+
       function initPicker() {
         if(scope.location == undefined){
           getLocation();
@@ -47,7 +51,6 @@ directive("googleMapLocator",function($window){
           scope.location = JSON.parse(scope.location);
           initLocationPicker();
         }
-
       }
 
       function getLocation() {
@@ -80,6 +83,8 @@ directive("googleMapLocator",function($window){
             oninitialized: function(component) {
                 var location = $(component).locationpicker('map').location;
                 onInitialized(location);
+                var mapContext = $(element).locationpicker('map');
+                onMapLoaded(mapContext.map);
             }
         });
       }
