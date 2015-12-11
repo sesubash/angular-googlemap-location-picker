@@ -45,7 +45,7 @@ directive("googleMapLocator",function($window){
       }
 
       function initPicker() {
-        if(scope.location == undefined){
+        if(!scope.location){
           getLocation();
         }else{
           scope.location = JSON.parse(scope.location);
